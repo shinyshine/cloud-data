@@ -15,7 +15,7 @@ var config = {
     },
     output: {
         path: DIST_DIR + '/app',
-        filename: "js/[name]-[chunkhash].js",
+        filename: "js/[name]-[hash].js",
         publicPath: "/app/"
     },
     module: {
@@ -96,7 +96,7 @@ var config = {
 
         }),
         new htmlWebpackPlugin({
-            filename: 'index.html',
+            filename: 'detail.html',
             template: './src/template/detail.html',
             inject: 'body',
             title: 'this is detail',
@@ -104,7 +104,7 @@ var config = {
         }),
 
         new htmlWebpackPlugin({
-            filename: 'index.html',
+            filename: 'topic.html',
             template: './src/template/topic.html',
             inject: 'body',
             title: 'this is topic',
