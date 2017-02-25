@@ -6,9 +6,9 @@ const BannerItem = ({item}) => {
 		<div className="banner-item">
 			<figure>
 				<img src={require('../../images/1.jpg')} />
-				<figuration>
+				<div className="banner-caption">
 					这里是banner的描述
-				</figuration>
+				</div>
 			</figure>
 		</div>
 	);

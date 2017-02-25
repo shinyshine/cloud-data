@@ -27,17 +27,25 @@ class Banner extends React.Component {
 
     componentWillUnMount() {
     	console.log('componentWillUnMount');
-    	// clearInterval(this.interval);
+    	clearInterval(this.interval);
     }
 
 	render() {
 		return (
 			<div id="banner">
 				<div className="current-viewport">
-					<div className="news-slide-wrapper">
+					<div style={{left: -this.props.current * 100 + '%'}} className="news-slide-wrapper">
 						<BannerItem item="data"/>
 						<BannerItem item="data"/>
 						<BannerItem item="data"/>
+					</div>
+
+					<div className="dot-tabs">
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
 					</div>
 				</div>
 				

@@ -14,7 +14,6 @@ html, body{
 	width: 100%;
 	height: 100px;
 	background-color: @mainC;
-	background: url('../images/1.jpg');
 
 	.header-container{
 		height: 100%;
@@ -38,13 +37,32 @@ html, body{
 
 #banner {
 	.current-viewport{
+		position: relative;
 		width: 100%;
 		height: @bannerH;
 
 		overflow: hidden;
 		.news-slide-wrapper{
+			transition: left 0.5s;
+			position: absolute;
+			left: 0;
 			width: 300%;
 			height: 100%;
+		}
+
+		.dot-tabs {
+			position: absolute;
+			bottom: 50px;
+			right: 50%;
+			margin: 0 -@mainW/2;
+			ul li{
+				list-style: none;
+				float: left;
+				width: 50px;
+				height: 3px;
+				background-color: #ffffff;
+				margin-left: 8px;
+			}
 		}
 		
 	}
@@ -54,8 +72,32 @@ html, body{
 		height: 100%;
 		float: left;
 		overflow: hidden;
+		figure {
+			position: relative;
+			height: 100%;
+			overflow: hidden;
+			&:before{
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background-color: rgba(57,95,134,0.5);
+			}
+			
+			.banner-caption {        
+				width: @mainW/2;
+				color: #ffffff;
+				position: absolute;
+				left: 50%;
+				margin: 0 -@mainW/2;
+				bottom: 50px;
+			}
+		}
 
 		figure img{
+			
 			width: 100%;
 		}
 	}
