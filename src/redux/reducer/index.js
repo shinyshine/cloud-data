@@ -1,8 +1,9 @@
 import {combineReducers} from 'redux'
-import {newsList} from './newsList'
+import {newsList, currentIndex} from './newsList'
 
 const reducers = combineReducers({
-	newsList: newsList
+	newsList: newsList,
+	currentIndex: currentIndex
 })
 
 export default reducers;

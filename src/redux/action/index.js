@@ -19,3 +19,9 @@ export const search = (text) => {
 		dispatch(fetchData({text:text}));
 	}
 }
+
+export const switchBanner = (index) => {
+	return dispatch => {
+		dispatch({type: 'SWITCH_BANNER', index: index})
+	}
+}	

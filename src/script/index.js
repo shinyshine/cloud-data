@@ -6,6 +6,8 @@ import store from '../redux/store/index'
 
 import Layout from '../components/index'
 
+import '../style/Common.less';
+
 const app = document.getElementById('app');
 
 ReactDom.render(

@@ -13,3 +13,14 @@ export const newsList = (state = [], action) => {
 			return state;
 	}
 }
+
+
+export const currentIndex = (state = 0, action) => {
+	switch (action.type) {
+		case 'SWITCH_BANNER': 
+			return (state >= 2 ? 0 : state + 1);
+
+		default: 
+			return state;
+	}
+}
