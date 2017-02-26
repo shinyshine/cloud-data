@@ -33,9 +33,9 @@ class Banner extends React.Component {
 			<div id="banner">
 				<div className="current-viewport">
 					<div style={{left: -this.props.current * 100 + '%'}} className="news-slide-wrapper">
-						<BannerItem item="data"/>
-						<BannerItem item="data"/>
-						<BannerItem item="data"/>
+						<BannerItem item="lun bo tu here~！！！~~"/>
+						<BannerItem item="lun bo tu here~！！！~~"/>
+						<BannerItem item="lun bo tu here~！！！~~"/>
 					</div>
 
 					<div className="dot-tabs">
