@@ -35,7 +35,7 @@ class Header extends React.Component {
         								search: e.target.value
         							})
         						}}/>
-        					<button type="submit">搜索</button>
+        					<button type="submit"></button>
         				</form>
         			</div>
                 </div>
