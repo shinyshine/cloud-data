@@ -10,8 +10,6 @@ class Banner extends React.Component {
 	constructor(props) {
 		super(props);
 		 this.state = {
-		 	bannerNews: "banner banner here hhhhhh",
-
 		 	interval: null
 		 }
 	}
@@ -21,7 +19,7 @@ class Banner extends React.Component {
 		this.interval = setInterval(function() {
 			_this.props.actions.switchBanner();
 
-		}, 2000);
+		}, 5000);
 		console.log('componentDidMount');
     }
 
@@ -41,10 +39,11 @@ class Banner extends React.Component {
 					</div>
 
 					<div className="dot-tabs">
+						<span style={{transform: 'translate(' + (this.props.current*50 + 3*(2*this.props.current + 1)) + 'px,0)'}} className="active-tab"></span>
 						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li className="active"><i></i></li>
+							<li><i></i></li>
+							<li><i></i></li>
 						</ul>
 					</div>
 				</div>

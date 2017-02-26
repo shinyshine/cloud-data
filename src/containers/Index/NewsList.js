@@ -1,13 +1,16 @@
 import React from "react"
 import {connect} from 'react-redux'
+import NewsItem from './NewsItem'
 
 const NewsList = ({newsList}) => {
 	return (
-		<div>
-			<h1>{newsList.map((news, index) => {
-					return <p key={index}>{news}</p>
-				})}
-			</h1>
+		<div id="main">
+			<div className="c-container">
+				{newsList.map((news, index) => 
+					<NewsItem key={index} />
+				)}
+			</div>
+			
 		</div>	
 	);
 }

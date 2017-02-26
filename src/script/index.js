@@ -6,7 +6,8 @@ import store from '../redux/store/index'
 
 import Layout from '../components/index'
 
-import '../style/Common.less';
+import '../style/Common.less'
+import '../style/NewsList.less'
 
 const app = document.getElementById('app');
 

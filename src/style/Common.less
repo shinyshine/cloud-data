@@ -1,4 +1,4 @@
-html, body, h1,img,ul,li, figure{
+html, body, h1,h2,img,ul,li, figure,p{
 	margin: 0;
 	padding: 0;
 }
@@ -9,6 +9,7 @@ html, body{
 @mainW: 960px;
 @mainC: #BF0909;
 @bannerH: 550px;
+@bannerTransition: 2.0s;
 
 #header{
 	width: 100%;
@@ -43,7 +44,7 @@ html, body{
 
 		overflow: hidden;
 		.news-slide-wrapper{
-			transition: left 0.5s;
+			transition: left @bannerTransition;
 			position: absolute;
 			left: 0;
 			width: 300%;
@@ -55,14 +56,34 @@ html, body{
 			bottom: 50px;
 			right: 50%;
 			margin: 0 -@mainW/2;
-			ul li{
-				list-style: none;
-				float: left;
+			.active-tab{
+				transition: transform @bannerTransition;
+				display: inline-block;
+				position: absolute;
+				left: 0;
+				top: 0;
 				width: 50px;
 				height: 3px;
 				background-color: #ffffff;
-				margin-left: 8px;
+				z-index: 99;
 			}
+			li{
+				list-style: none;
+				float: left;
+				height: 3px;
+				width: 50px;
+				position: relative;
+				padding: 0 3px;
+				z-index: 9;
+			}
+			li i{
+				position: absolute;
+				display: inline-block;
+				width: 50px;
+				height: 3px;
+				background-color: #2D4562;
+			}
+			
 		}
 		
 	}
@@ -101,4 +122,9 @@ html, body{
 			width: 100%;
 		}
 	}
+}
+
+.c-container{
+	width: @mainW;
+	margin: 0 auto;
 }
