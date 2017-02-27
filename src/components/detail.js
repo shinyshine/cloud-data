@@ -4,6 +4,9 @@ import Header from '../containers/Header/Header'
 import BannerItem from '../containers/Banner/BannerItem'
 import Footer from '../containers/Footer/Footer'
 
+import Links from '../containers/Detail/Links'
+import LineChart from '../containers/Detail/LineChart'
+
 const App = () => {
 	return (
 		<div>
@@ -14,8 +17,9 @@ const App = () => {
 						<BannerItem/>
 					</div>
 				</div>
-				
 			</div>
+			<Links/>
+			<LineChart/>
 			<Footer/>
 		</div>
 	);

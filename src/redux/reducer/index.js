@@ -3,7 +3,7 @@ import {newsList, currentIndex} from './newsList'
 
 const reducers = combineReducers({
 	newsList: newsList,
-	currentIndex: currentIndex
+	currentIndex: currentIndex,
 })
 
 export default reducers;
