@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 class NewsItem extends React.Component {
 	constructor (props) {
@@ -38,13 +37,6 @@ const mapStateToProps = (state) => {
 		newsList: state.newsList
 	}
 }
-
-/*const mapDispatchToProps = (dispatch) => {
-	return {
-		actions: bindActionCreators({})
-	}
-
-}*/
 
 export default connect(mapStateToProps, null)(NewsItem);
 

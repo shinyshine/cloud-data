@@ -10,7 +10,9 @@ html, body{
 @mainC: #BF0909;
 @bannerH: 550px;
 @bannerTransition: 2.0s;
-
+@titleC: #333333;
+@titleC-1: #555555;
+@titleC-2: #777777;
 #header{
 	width: 100%;
 	height: 100px;
@@ -143,6 +145,24 @@ html, body{
 				left: 50%;
 				margin: 0 -@mainW/2;
 				bottom: 50px;
+				h1{
+					line-height: 60px;
+					letter-spacing: 3px;
+				}
+				.date{
+					font-size: 17px;
+					margin-bottom: 10px;
+					letter-spacing: 2px;
+					span{
+						margin-right: 10px;
+					}
+				}
+				.abstract {
+					letter-spacing: 1px;
+					color: #eeeeee;
+					font-size: 15px;
+					line-height: 22px;
+				}
 			}
 		}
 
@@ -179,4 +199,23 @@ html, body{
 
 .bg-color{
 	background-color: @mainC;
+}
+
+.sub-title{
+	color: @titleC;
+	letter-spacing: 2px;
+	height: 45px;
+	line-height: 45px;
+	position: relative;
+	font-size: 26px;
+	font-weight: 600;
+	padding-left: 50px;
+	&:after{
+		content: "";
+		position: absolute;
+		height: 100%;
+		left: 0;
+		width: 36px;
+
+	}
 }

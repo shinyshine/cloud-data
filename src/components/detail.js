@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Header from '../containers/Header/Header'
-import BannerItem from '../containers/Banner/BannerItem'
+import BannerDetail from '../containers/Banner/BannerDetail'
 import Footer from '../containers/Footer/Footer'
 
 import Links from '../containers/Detail/Links'
@@ -13,13 +13,7 @@ const App = () => {
 	return (
 		<div>
 			<Header/>
-			<div id="banner">
-				<div className="current-viewport">
-					<div className="news-slide-wrapper">
-						<BannerItem/>
-					</div>
-				</div>
-			</div>
+			<BannerDetail/>
 			<Links/>
 			<LineChart/>
 			<PieChart/>
