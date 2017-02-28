@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build",
-    "build": "webpack -d && webpack-dev-server --content-base dist/ --inline --hot"
+    "build": "webpack -d && webpack-dev-server --content-base dist/ --port 8008 --inline --hot"
   },
   "keywords": [
     "react"
@@ -35,8 +35,13 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "d3": "^4.6.0",
+    "d3-cloud": "^1.2.4",
+    "d3-scale": "^1.0.4",
+    "highcharts": "^5.0.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-highcharts": "^11.5.0",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
