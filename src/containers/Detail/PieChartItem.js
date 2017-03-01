@@ -65,30 +65,28 @@ class PieChart extends React.Component {
 						colorByPoint: true,
 						data: [{
 							name: 'Microsoft',
-							y: 20
+							y: 0.20
 						}, {
 							name: 'Chrome',
-							y: 10,
-							sliced: true,
-							selected: true
+							y: 0.10,
 						}, {
 							name: 'Firefox',
-							y: 20
+							y: 0.20
 						}, {
 							name: 'Safari',
-							y: 10
+							y: 0.10
 						}, {
 							name: 'Opera',
-							y: 5
+							y: 0.05
 						},{
 							name: 'Opera',
-							y: 15
+							y: 0.15
 						},{
 							name: 'Opera',
-							y: 10
+							y: 0.10
 						},{
 							name: 'Opera',
-							y: 10
+							y: 0.10
 						}]
 					}]
 		}
@@ -97,7 +95,7 @@ class PieChart extends React.Component {
 	render() {
 		return (
 			<div className="pie-item">
-				<h2 className="sub-title">网站报道量占比</h2>
+				<h2 className="sub-title">{this.props.name}</h2>
 				<div className="pie-item-wrap">
 					<ReactHighCharts config={this.chartConfig} />
 				</div>

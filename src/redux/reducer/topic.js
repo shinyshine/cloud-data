@@ -97,30 +97,38 @@ export const comments = (state = commentsInitial, action) => {
 }
 
 var emotionInitial = [  {
-							name: 'Microsoft',
-							y: 20
-						}, {
-							name: 'Chrome',
-							y: 10,
-						}, {
-							name: 'Firefox',
-							y: 20
-						}, {
-							name: 'Safari',
-							y: 10
-						}, {
-							name: 'Opera',
-							y: 5
-						},{
-							name: 'Opera',
-							y: 15
-						},{
-							name: 'Opera',
-							y: 10
-						},{
-							name: 'Opera',
-							y: 10
-						}]
+    						id: 0,
+    						name: "悲伤",
+    						y : 12.5
+    					},{
+    						id: 1,
+    						name: "悲伤",
+    						y : 12.5
+    					},{
+    						id: 2,
+    						name: "悲伤",
+    						y : 12.5
+    					},{
+    						id: 3,
+    						name: "悲伤",
+    						y : 12.5
+    					},{
+    						id: 4,
+    						name: "悲伤",
+    						y : 12.5
+    					},{
+    						id: 5,
+    						name: "悲伤",
+    						y : 12.5
+    					},{
+    						id: 6,
+    						name: "悲伤",
+    						y : 12.5
+    					},{
+    						id: 7,
+    						name: "悲伤",
+    						y : 12.5
+    					}]
 export const emotionPie = (state = emotionInitial, action) => {
 	switch(action.type) {
 		case "GET_PIE_DATA":

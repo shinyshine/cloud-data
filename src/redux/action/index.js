@@ -1,24 +1,75 @@
 import axios from "axios"
+var news = [{
+	id: 1,
+	title: "林丹出轨",
+	category: "时政类",
+	date: "2017/11/11",
+	abstract: "摘要"
+},{
+	id: 1,
+	title: "林丹出轨",
+	category: "时政类",
+	date: "2017/11/11",
+	abstract: "摘要"
+},{
+	id: 1,
+	title: "林丹出轨",
+	category: "时政类",
+	date: "2017/11/11",
+	abstract: "摘要"
+},{
+	id: 1,
+	title: "林丹出轨",
+	category: "时政类",
+	date: "2017/11/11",
+	abstract: "摘要"
+},{
+	id: 1,
+	title: "林丹出轨",
+	category: "时政类",
+	date: "2017/11/11",
+	abstract: "摘要"
+}]
 
-
-const getDataSuccess = (text) => {
-	return {
-		type: 'FETCH_NEWS_SUCCESS',
-		newsList: "you are searching the news with de keyword" + text
-	}
-}
-
-const fetchData = (postData) => {
+export const fetchNews = (text) => {
 	return dispatch => {
-		dispatch(getDataSuccess(postData.text))
+
+		var responce = news;
+		
+		dispatch({
+			type: "GET_NEWS_SUCCESS",
+			newsList: responce.slice(3)
+		});
+		dispatch({
+			type: "GET_BANNER_SUCCESS",
+			banner: responce.slice(0,3)
+		})
+		// 发起请求
+		// axios.get('url', {
+		// 	text: "搜索内容，可为空"
+		// })
+		// .then((responce) => {
+		// 	console.log(responce);
+		// 	dispatch({
+		// 		type: "GET_NEWS_SUCCESS",
+		// 		newsList: responce.slice(3)
+		// 	});
+		// 	dispatch({
+		// 		type: "GET_BANNER_SUCCESS",
+		// 		banner: responce.slice(0,3)
+		// 	})
+
+		// })
 	}
 }
 
-export const search = (text) => {
-	return dispatch => {
-		dispatch(fetchData({text:text}));
-	}
-}
+
+
+
+export const search = (text) => ({
+	type: "SEARCH_NEWS",
+	text: text
+})
 
 export const switchBanner = (index) => {
 	return dispatch => {

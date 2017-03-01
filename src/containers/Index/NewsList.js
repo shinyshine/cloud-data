@@ -7,7 +7,7 @@ const NewsList = ({newsList}) => {
 		<div id="main">
 			<div className="c-container">
 				{newsList.map((news, index) => 
-					<NewsItem key={index} />
+					<NewsItem key={index} item={news} />
 				)}
 			</div>
 			
@@ -15,10 +15,10 @@ const NewsList = ({newsList}) => {
 	);
 }
 
-const mapStateTopProps = (state) => {
+const mapStateToProps = (state) => {
 	return {
 		newsList: state.newsList
 	}
 }
-export default connect(mapStateTopProps, null)(NewsList);
+export default connect(mapStateToProps, null)(NewsList);
 

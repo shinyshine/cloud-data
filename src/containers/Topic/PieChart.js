@@ -42,7 +42,7 @@ class PieChart extends React.Component {
 					events: {
 						click: function(e) {
 							var item = {
-								id: 1,
+								id: e.point.id,
 								text: e.point.name,
 							}
 							_this.props.actions.fetchComments(item);

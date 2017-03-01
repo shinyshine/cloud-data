@@ -3,15 +3,28 @@ import { connect } from "react-redux"
 
 import { bindActionCreators } from "redux"
 
-import { switchBanner } from '../../redux/action/index'
+import { switchBanner, fetchNews } from '../../redux/action/index'
 
 import BannerItem from './BannerItem'
 class Banner extends React.Component {
 	constructor(props) {
 		super(props);
 		 this.state = {
-		 	interval: null
+		 	interval: null,
 		 }
+	}
+	componentWillMount() {
+		// 获取地址栏的搜索信息
+		var text = "";
+		var url = window.location.search;
+		
+		if(url != "") {
+			url = url.split('?')[1];
+			text = url.split('=')[1];
+		}
+		// 请求首页的10条数据
+		this.props.actions.fetchNews(text);
+
 	}
 
 	componentDidMount() {
@@ -20,11 +33,9 @@ class Banner extends React.Component {
 			_this.props.actions.switchBanner();
 
 		}, 5000);
-		console.log('componentDidMount');
     }
 
     componentWillUnMount() {
-    	console.log('componentWillUnMount');
     	clearInterval(this.interval);
     }
 
@@ -33,9 +44,10 @@ class Banner extends React.Component {
 			<div id="banner">
 				<div className="current-viewport">
 					<div style={{left: -this.props.current * 100 + '%'}} className="news-slide-wrapper">
-						<BannerItem item="lun bo tu here~！！！~~"/>
-						<BannerItem item="lun bo tu here~！！！~~"/>
-						<BannerItem item="lun bo tu here~！！！~~"/>
+						{this.props.banner.map((item, index) => {
+							return <BannerItem key={index} item={item}/>
+						})}
+
 					</div>
 
 					<div className="dot-tabs">
@@ -54,13 +66,14 @@ class Banner extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators({switchBanner}, dispatch)
+	actions: bindActionCreators({switchBanner, fetchNews}, dispatch)
 })
 
-const mapStateTopProps = (state) => {
+const mapStateToProps = (state) => {
 	return {
-		current: state.currentIndex
+		current: state.currentIndex,
+		banner: state.banner
 	}
 }
 
-export default connect(mapStateTopProps, mapDispatchToProps)(Banner);
+export default connect(mapStateToProps, mapDispatchToProps)(Banner);

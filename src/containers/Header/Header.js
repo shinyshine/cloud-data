@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 
-import {search} from '../../redux/action/index'
+import {fetchNews} from '../../redux/action/index'
 
 class Header extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class Header extends React.Component {
         				<form onSubmit={e => {
         					e.preventDefault();
         					
-        					this.props.actions.search(this.state.search);
+        					this.props.actions.fetchNews(this.state.search);
         					
         				}}>
         					<input 
@@ -45,7 +45,7 @@ class Header extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators({search}, dispatch),
+	actions: bindActionCreators({fetchNews}, dispatch),
 
 })
 
