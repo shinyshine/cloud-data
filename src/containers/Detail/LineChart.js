@@ -34,7 +34,6 @@ class LineChart extends React.Component {
 					width: 1,
 					color: '#808080'
 				}],
-				// gridLineColor: '#cdcdcd'
 				gridLineColor: '#FAC1C1'
 			},
 			credits: {

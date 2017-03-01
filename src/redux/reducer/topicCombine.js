@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
-import { banner, showAll } from './topic'
+import { banner, standBy, emotionPie, comments } from './topic'
 
 const reducers = combineReducers({
 	banner: banner,
-	showAll: showAll
+	standBy: standBy,
+	emotionPie: emotionPie,
+	comments: comments
 })
 
 export default reducers;

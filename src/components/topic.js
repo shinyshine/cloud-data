@@ -5,6 +5,9 @@ import Footer from '../containers/Footer/Footer'
 
 import Banner from '../containers/Topic/Banner'
 import NewsLinks from '../containers/Topic/NewsLinks'
+import StandBy from '../containers/Topic/StandBy'
+import CommentBar from '../containers/Topic/CommentBar'
+import EmotionPie from '../containers/Topic/EmotionPie'
 
 
 const App = () => {
@@ -13,6 +16,9 @@ const App = () => {
 			<Header/>
 			<Banner/>
 			<NewsLinks/>
+			<StandBy/>
+			<CommentBar/>
+			<EmotionPie/>
 			<Footer/>
 		</div>
 	);

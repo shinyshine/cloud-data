@@ -1,4 +1,7 @@
 @mainC: #BF0909;
+@standH: 40px;
+@bgColor: #E5E5E5;
+@borderC: #aaaaaa;
 .banner-caption{
 	
 	
@@ -24,6 +27,7 @@
 .news-links {
 	min-height: 300px;
 	padding: 40px 0;
+	border-bottom: 1px solid @borderC;
 	position: relative;
 	.left-white-bg{
 		position: absolute;
@@ -56,7 +60,7 @@
 		width: 67%;
 		display: inline-block;
 		height: 100%;
-		background-color: #E5E5E5;
+		background-color: @bgColor;
 		z-index: -1;
 
 	}
@@ -156,4 +160,115 @@
 
 
 
+}
+
+.stand-by{
+	min-height: 300px;
+	padding: 50px 0;
+	background-color: @bgColor;
+	border-bottom: 1px solid @borderC;
+	.sub-title:after{
+		background: url('../images/stand_by.png') no-repeat;
+		background-size: 36px 36px;
+		background-position: center center;
+	}
+	.stand-items{
+		padding: 20px 0;
+	}
+	.stand-item{
+		height: @standH;
+		padding: 20px 0;
+		.target {
+			display: inline-block;
+			position: relative;
+			letter-spacing: 1px;
+			bottom: 11px;
+			width: 100px;
+			height: @standH;
+			line-height: @standH;
+			font-size: 23px;
+			font-weight: 500;
+			text-align: center;
+		}
+		.stand-bar{
+			display: inline-block;
+			width: 300px;
+			height: @standH;
+		}
+		.po-bar{
+			background-color: #057D8D;
+		}
+		.ne-bar{
+			background-color: #DA2B3A;
+		}
+		
+	}
+
+}
+
+.comment-bar{
+	padding: 50px 0;
+	background-color: @bgColor;
+	border-bottom: 1px solid @borderC;
+	.sub-title:after{
+		background: url('../images/comment.png') no-repeat;
+		background-size: 36px 36px;
+		background-position: center center;
+	}
+
+	.bar-container{
+		position: relative;
+		padding: 50px 0 0;
+		.y-axis{
+			position: absolute;
+			left: 8px;
+			top: 20px;
+		}
+	}
+
+}
+
+.emotion-pie {
+	height: 500px;
+	padding: 50px 0; 
+	background-color: @bgColor;
+	.sub-title:after{
+		background: url('../images/pie.jpg') no-repeat;
+		background-size: 36px 36px;
+		background-position: center center;
+	}
+	.pie-item{
+		height: 400px;
+		width: 50%;
+		float: left;
+	}
+	.comments{
+		padding: 20px 10px 10px 30px;
+		box-sizing: border-box;
+		h3{
+			height: 30px;
+			margin-bottom: 10px;
+		}
+		ul {
+			list-style: none;
+			overflow-y: auto;
+			height: 330px;
+			li {
+				padding: 7px 0;
+				border-bottom: 1px solid #bcbcbc;
+				color: #333333;
+			}
+		}
+	}
+	.target {
+		font-size: 22px;
+		letter-spacing: 2px;
+		i{
+			display: inline-block;
+			margin-right: 10px;
+			float: left;
+			width: 30px;
+			height: 30px;
+		}
+	}
 }

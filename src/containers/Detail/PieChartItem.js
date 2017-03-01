@@ -6,7 +6,6 @@ class PieChart extends React.Component {
 	constructor(props) {
 
 		super(props);
-		console.log(this.props);
 		var colorArr1 = [
 				"#8B0505",
 				"#B80002",
