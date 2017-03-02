@@ -1,6 +1,8 @@
 import React from "react"
+import { bindActionCreators } from "redux"
 import {connect} from "react-redux"
 
+import { fetchTopic } from "../../redux/action/topic"
 class BannerItem extends React.Component {
 	constructor(props) {
 		super(props);
@@ -8,6 +10,17 @@ class BannerItem extends React.Component {
 		this.state = {
 			bannerItem: this.props.bannerItem
 		}
+		console.log(this.props);
+	}
+
+	componentWillMount() {
+		// 获取地址栏的搜索信息
+		var id = "";
+		var url = window.location.search;
+		url = url.split('?')[1];
+		id = url.split('=')[1];
+		// 在此处请求整个页面的数据
+		this.props.actions.fetchTopic(id);
 	}
 
 	render() {
@@ -19,17 +32,15 @@ class BannerItem extends React.Component {
 							<figure>
 								<img src={require('../../images/1.jpg')} />
 								<div className="banner-caption">
-									<h1>川普就职演讲</h1>
+									<h1>{this.props.banner.title}</h1>
 									<p className="abstract">
-										React Native 是由Facebook发布的开源框架，它的宣传语是“Learn once，write anywhere”，似乎是在标榜着React Native在手，在编程的世界里走遍天下都不怕，这消息一发出，就在开发人员内部掀起了一阵小高潮，一些人员感激涕零的表示：跨平台呀跨平台，这简直就是开发者的福音啊，另一些人员则表示：任何宣传一技在手，走遍天下的技术都是纸老虎，没有办法走到最后。那么，为什么在开发人员中会出现这两种截然不同的反应呢?
+										{this.props.banner.abstract}
 									</p>
 									<div className="hot-level">
 										<span>热度指数</span>
-										<i className="fire"></i>
-										<i className="fire"></i>
-										<i className="fire"></i>
-										<i className="fire"></i>
-										<i className="fire"></i>
+										{ this.props.banner.hot_level.map((item, index) => {
+											return <i key={index} className="fire"></i>
+										})}
 									</div>
 								</div>
 								
@@ -46,10 +57,13 @@ class BannerItem extends React.Component {
 
 const mapStateTopProps = (state) => {
 	return {
-		bannerItem: '这里不是轮播图哦~~~'
+		banner: state.banner
 	}
 }
+const mapDispatchToProps = (dispatch) => ({
+	actions: bindActionCreators({ fetchTopic }, dispatch)
+})
 
-export default connect(mapStateTopProps, null)(BannerItem);
+export default connect(mapStateTopProps, mapDispatchToProps)(BannerItem);
 
 

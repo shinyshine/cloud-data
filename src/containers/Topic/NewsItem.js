@@ -1,7 +1,7 @@
 import React from "react"
 // import { connect } from "react-redux"
 // import {bindActionCreators} from 'redux'
-import { showAllText, hideAllText } from "../../redux/action/topic"
+
 class NewsItem extends React.Component {
 	constructor(props) {
 		super(props);
