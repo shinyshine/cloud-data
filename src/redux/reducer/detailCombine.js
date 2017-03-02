@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux'
-import { topics } from './detail'
+import { banner, topics, report, keywords, percent } from './detail'
 
 const reducers = combineReducers({
-	topics: topics
+	banner: banner,
+	topics: topics,
+	report: report,
+	keywords: keywords,
+	percent: percent
+
 })
 
 export default reducers;

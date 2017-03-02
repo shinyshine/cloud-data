@@ -1,16 +1,27 @@
 import React from "react"
 import PieChartItem from "./PieChartItem"
 import { connect } from "react-redux"
-const PieChart = ({pies}) => {
-	return (
-		<div className="pie-chart">
-			<div className="c-container">
-				<PieChartItem name="网站报道量占比" num="5"/>
-				<PieChartItem name="情绪量占比" num="8" />
-			</div>
-			
-		</div>
-	);
-}
 
-export default PieChart;
+
+class PieChart extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<div className="pie-chart">
+				<div className="c-container">
+					<PieChartItem pie={this.props.pieData.report} name="网站报道量占比"/>
+					<PieChartItem pie={this.props.pieData.emotion} name="情绪量占比"/>
+				</div>
+				
+			</div>
+		);
+	}
+}
+const mapStateToProps = (state) => ({
+	pieData: state.percent
+})
+
+export default connect(mapStateToProps, null)(PieChart);

@@ -25,10 +25,13 @@
 传参：{id : 1}
 返回：
 {
-	title: "时间标题",
-	date: "2017/11/11",
-	abstract: "摘要",
-	image: "http://image.jpg",
+	basic: {
+		title: "时间标题",
+		date: "2017/11/11",
+		abstract: "摘要",
+		image: "http://image.jpg",
+	},
+	
 	topics: [{  //话题链
 				id: 1,
 				title: "这是某个话题的名称"
@@ -137,9 +140,11 @@
 传参：{ id: 1 }
 返回：
 {
-	title: "川普就职演讲",
-	abstract: "摘要",
-	hot_level: 3, //取值为1~5，表示热度指数
+	basic: {
+		title: "川普就职演讲",
+		abstract: "摘要",
+		hot_level: 3, //取值为1~5，表示热度指数
+	},
 	news_links: [   // 新闻链
 					{
 						id: 1,

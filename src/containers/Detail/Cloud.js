@@ -1,4 +1,5 @@
 import React from "react"
+import { connect } from "react-redux"
 
 
 const d3 = require("d3");
@@ -16,10 +17,11 @@ class Cloud extends React.Component {
 	}
 	
 	componentDidMount() {
-		var wordsArr = [
-				      "谢杏芳", "林丹", "中国体育", "比赛", "出轨", "最大危机", "赵雅琪",
-				      "模范夫妻", "泥潭中求生"];
-		var sizeArr = [0.25, 0.8, 0.1, 0.12, 0.75, 0.4, 0.45, 0.35, 0.23]
+		var _this = this;
+		// var wordsArr = [
+		// 		      "谢杏芳", "林丹", "中国体育", "比赛", "出轨", "最大危机", "赵雅琪",
+		// 		      "模范夫妻", "泥潭中求生"];
+		// var sizeArr = [0.25, 0.8, 0.1, 0.12, 0.75, 0.4, 0.45, 0.35, 0.23]
 		// 定义多种颜色的词云
 		var fill = function(i) {
 			return d3.schemeCategory20[i];
@@ -49,8 +51,8 @@ class Cloud extends React.Component {
 		// 配置词云的样式
 		var layout = cloud()
 				    .size([450, 450])
-				    .words(wordsArr.map(function(d, i) {
-				      return {text: d, size: 14 + sizeArr[i] * 60, test: "haha"};
+				    .words(_this.props.keywords.words.map(function(d, i) {
+				      return {text: d, size: 14 + _this.props.keywords.weight[i] * 60, test: "haha"};
 				    }))
 				    .padding(5)
 				    .rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -77,5 +79,9 @@ class Cloud extends React.Component {
 
 }
 
-export default Cloud;
+const mapStateToProps = (state) => ({
+	keywords: state.keywords
+})
+
+export default connect(mapStateToProps, null)(Cloud);
 

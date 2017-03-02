@@ -6,25 +6,27 @@ class PieChart extends React.Component {
 	constructor(props) {
 
 		super(props);
-		var colorArr1 = [
-				"#8B0505",
-				"#B80002",
-				"#C43131",
-				"#E84B4B",
-				"#EA8989"
-			],
-			colorArr2 = [
-				"#0D365F",
-				"#0F487F",
-				"#346DA4",
-				"#5891C8",
+		var len = this.props.pie.length;
+		var colorArr =  (len == "5" ? [
+										"#8B0505",
+										"#B80002",
+										"#C43131",
+										"#E84B4B",
+										"#EA8989"
+									  ] : 
+									  [
+										"#0D365F",
+										"#0F487F",
+										"#346DA4",
+										"#5891C8",
 
-				"#7CB5EC",
-				"#A4DAFF",
-				"#AACEF2",
-				"#BFDBF7"
-			]
-		var colorArr = (this.props.num == "5" ? colorArr1 : colorArr2);
+										"#7CB5EC",
+										"#A4DAFF",
+										"#AACEF2",
+										"#BFDBF7"
+									   ]);
+
+		console.log(this.props);
 		this.chartConfig = {
 			chart: {
 				plotBackgroundColor: null,
@@ -63,31 +65,7 @@ class PieChart extends React.Component {
 			series: [{
 						name: 'Brands',
 						colorByPoint: true,
-						data: [{
-							name: 'Microsoft',
-							y: 0.20
-						}, {
-							name: 'Chrome',
-							y: 0.10,
-						}, {
-							name: 'Firefox',
-							y: 0.20
-						}, {
-							name: 'Safari',
-							y: 0.10
-						}, {
-							name: 'Opera',
-							y: 0.05
-						},{
-							name: 'Opera',
-							y: 0.15
-						},{
-							name: 'Opera',
-							y: 0.10
-						},{
-							name: 'Opera',
-							y: 0.10
-						}]
+						data: this.props.pie
 					}]
 		}
 	}
