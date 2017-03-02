@@ -16,7 +16,7 @@ var config = {
     output: {
         path: DIST_DIR + '/app',
         filename: "js/[name]-[hash].js",
-        publicPath: "/app/"
+        publicPath: "/"
     },
     module: {
         rules: [
