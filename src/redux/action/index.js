@@ -45,21 +45,21 @@ export const fetchNews = (text) => {
 			banner: responce.slice(0,3)
 		})
 		// 发起请求
-		// axios.get('url', {
-		// 	text: "搜索内容，可为空"
-		// })
-		// .then((responce) => {
-		// 	console.log(responce);
-		// 	dispatch({
-		// 		type: "GET_NEWS_SUCCESS",
-		// 		newsList: responce.slice(3)
-		// 	});
-		// 	dispatch({
-		// 		type: "GET_BANNER_SUCCESS",
-		// 		banner: responce.slice(0,3)
-		// 	})
+		axios.get('http://192.168.235.21:8080/WeiboNewsProject/news/newsIndex.action', {
+			text: "搜索内容，可为空"
+		})
+		.then((responce) => {
+			console.log(responce);
+			// dispatch({
+			// 	type: "GET_NEWS_SUCCESS",
+			// 	newsList: responce.slice(3)
+			// });
+			// dispatch({
+			// 	type: "GET_BANNER_SUCCESS",
+			// 	banner: responce.slice(0,3)
+			// })
 
-		// })
+		})
 	}
 }
 

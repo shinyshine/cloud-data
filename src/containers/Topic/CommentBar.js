@@ -6,6 +6,7 @@ import ReactHighCharts from "react-highcharts"
 class CommentBar extends React.Component {
 	constructor(props) {
 		super(props);
+		var _this = this;
 		this.chartConfig = {
 			chart: {
 	            type: 'column',
@@ -36,18 +37,7 @@ class CommentBar extends React.Component {
 	        			"fontSize": '15px'
 	        		}
 	        	},
-	            categories: [
-	                '2017/03/01',
-	                '2017/03/01',
-	                '2017/03/01',
-	                '2017/03/01',
-	                '2017/03/01',
-	                '2017/03/01',
-	                '2017/03/01',
-	                '2017/03/01',
-	                '2017/03/01',
-	                '2017/03/01'
-	            ],
+	            categories: _this.props.commentNum.date,
 	            crosshair: true
 	        },
 	        yAxis: {
@@ -74,7 +64,7 @@ class CommentBar extends React.Component {
 	        },
 	        series: [{
 	            name: '评论数量',
-	            data: [71.5, 106.4, 129.2, 144.0,135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+	            data: _this.props.commentNum.number
 	        }]
 		}
 
@@ -96,4 +86,8 @@ class CommentBar extends React.Component {
 
 }
 
-export default CommentBar;
+const mapStateToProps = (state) => ({
+	commentNum: state.commentNum
+})
+
+export default connect(mapStateToProps, null)(CommentBar);

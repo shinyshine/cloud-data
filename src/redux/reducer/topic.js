@@ -35,13 +35,20 @@ export const commentNum = (state = {}, action) => {
 	}
 }
 
-
-export const comments = (state = {}, action) => {
+var commentsInitial = {
+	item: {
+		id: -1,
+		text: ""
+	},
+	
+}
+export const comments = (state = commentsInitial, action) => {
+	console.log(action);
 	switch (action.type) {
 		case "FETCH_COMMENTS": 
-			return state;
+			return Object.assign({}, state, action);
 		case "CHANGE_COM_TARGET": 
-			return Object.assign({}, state, action)
+			return Object.assign({}, state, action);
 		default: 
 			return state;
 	}

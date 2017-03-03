@@ -3,7 +3,7 @@ var bannerInitial = {
 		title: "川普就职演讲",
 		abstract: "摘要",
 		hot_level: 3, //取值为1~5，表示热度指数
-	},
+	}
 var newsListInitial = [   // 新闻链
 					{
 						id: 1,
@@ -42,12 +42,7 @@ var standInitial = [{
 	po: 0.99,
 	ne: 0.01
 }]
-var commentsInitial = {
-	item: {
-		id: -1,
-		text: ""
-	},
-	comments: [ {
+var commentsIn =  [ {
 					id: 1,
 					text: "第一条评论第一条评论第一条评论第一条评论第一条评论第一条评论第一条评论"
 				},{
@@ -93,7 +88,6 @@ var commentsInitial = {
 					id: 15,
 					text: "第二条评论"
 				}]
-}
 
 var emotionInitial = [  
 						{
@@ -176,14 +170,15 @@ export const fetchTopic = (id) => {
 
 export const fetchComments = (item) => {
 	return dispatch => {
+		
+
+		dispatch({
+			type: "FETCH_COMMENTS",
+			comments: commentsIn
+		});
 		dispatch({
 			type: "CHANGE_COM_TARGET",
 			item: item
 		});
-
-		dispatch({
-			type: "FETCH_COMMENTS",
-			comments: "comments"
-		})
 	}
 }

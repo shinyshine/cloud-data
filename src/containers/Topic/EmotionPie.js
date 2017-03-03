@@ -7,8 +7,8 @@ class EmotionPie extends React.Component {
 		super(props);
 
 		this.state = {
-			showComments: this.props.comments.item.id,
-			comments: this.props.comments,
+			// showComments: this.props.comments.item.id,
+			// comments: this.props.comments,
 			colorsArr: ["#0D365F",
 						"#0F487F",
 						"#346DA4",
@@ -19,7 +19,7 @@ class EmotionPie extends React.Component {
 						"#AACEF2",
 						"#BFDBF7"],
 		}
-		console.log(this.state);
+		console.log(this.props);
 	}
 
 	render() {

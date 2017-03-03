@@ -55,9 +55,9 @@ class PieChart extends React.Component {
 				enabled: false
 			},
 			series: [{
-						name: 'Brands',
+						name: '占比',
 						colorByPoint: true,
-						data: this.props.pieData
+						data: _this.props.pieData
 					}]
 		}
 	}

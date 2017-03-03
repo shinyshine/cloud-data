@@ -14,10 +14,11 @@ class NewsLinks extends React.Component {
 				<div className="c-container">
 					<h2 className="sub-title">新闻链</h2>
 					<div className="news-links-container">
-						<NewsItem index="0"/>
-						<NewsItem index="1"/>
-						<NewsItem index="2"/>
-						<NewsItem index="3"/>
+						{
+							this.props.newsList.map((item, index) => {
+								return <NewsItem key={index} item={item}/>
+							})
+						}
 					</div>
 					
 				</div>
@@ -28,7 +29,7 @@ class NewsLinks extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		newsLinks: state.newsLinks
+		newsList: state.newsList
 	}
 }
 

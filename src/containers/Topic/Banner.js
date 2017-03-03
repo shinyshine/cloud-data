@@ -6,10 +6,6 @@ import { fetchTopic } from "../../redux/action/topic"
 class BannerItem extends React.Component {
 	constructor(props) {
 		super(props);
-		// 不是轮播图
-		this.state = {
-			bannerItem: this.props.bannerItem
-		}
 		console.log(this.props);
 	}
 
@@ -38,9 +34,7 @@ class BannerItem extends React.Component {
 									</p>
 									<div className="hot-level">
 										<span>热度指数</span>
-										{ this.props.banner.hot_level.map((item, index) => {
-											return <i key={index} className="fire"></i>
-										})}
+
 									</div>
 								</div>
 								
