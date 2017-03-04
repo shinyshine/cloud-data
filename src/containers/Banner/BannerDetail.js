@@ -6,7 +6,6 @@ import { fetchDetail } from "../../redux/action/detail"
 class BannerItem extends React.Component {
 	constructor(props) {
 		super(props);
-		// 不是轮播图
 	}
 	componentWillMount() {
 		// 获取地址栏的搜索信息
@@ -26,12 +25,12 @@ class BannerItem extends React.Component {
 					<div className="news-slide-wrapper">
 						<div className="banner-item">
 							<figure>
-								<img src={require('../../images/3.jpg')} />
+								<img src={this.props.banner.eventImageUrl} />
 								<div className="banner-caption">
-									<h1>{this.props.banner.title}</h1>
-									<p className="date">{this.props.banner.date}</p>
+									<h1>{this.props.banner.eventName}</h1>
+									<p className="date">{this.props.banner.eventDateTime}</p>
 									<p className="abstract">
-										{this.props.banner.abstract}
+										{this.props.banner.eventSummary}
 									</p>
 								</div>
 							</figure>

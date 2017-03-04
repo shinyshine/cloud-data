@@ -6,6 +6,15 @@ export const banner = (state = [], action) => {
 			return state;
 	}
 }
+export const reportLine = (state = {}, action) => {
+	switch (action.type) {
+		case 'SAVE_REPORT_NUM':
+			return action.reportNum;
+
+		default: 
+			return state;
+	}
+}
 export const newsList = (state = [], action) => {
 	switch (action.type) {
 		case "SAVE_NWES_LIST":
@@ -43,7 +52,6 @@ var commentsInitial = {
 	
 }
 export const comments = (state = commentsInitial, action) => {
-	console.log(action);
 	switch (action.type) {
 		case "FETCH_COMMENTS": 
 			return Object.assign({}, state, action);

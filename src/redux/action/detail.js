@@ -49,36 +49,7 @@ var topicsInitial = [{  //话题链
 						title: "这是某个话题的名称",
 						date: "2017/3/1"
 					 }];
-var reportInitial = {   //一周内8种情感随着时间的报道量折线图
-					// date数组和report数组长度均为7
-					//	report数组长度为8（即8种情感）
-					date: ['2017/2/23','2017/2/24','2017/2/25','2017/2/26','2017/2/27','2017/2/28','2017/2/29'],
-					report: [{
-						name: "悲伤", //情感名称
-						data: [22,222,29,11,55,66,332] //要求均为int
-					 },{
-						name: "愤怒", //情感名称
-						data: [220,23,85,45,32,66,255]
-					 },{
-						name: "焦虑", //情感名称
-						data: [28,85,41,32,65,98,42]
-					 },{
-						name: "同情", //情感名称
-						data: [22,222,29,11,55,66,332]
-					 },{
-						name: "喜欢", //情感名称
-						data: [87,101,122,302,333,220,112]
-					 },{
-						name: "厌恶", //情感名称
-						data: [52,63,72,75,23,22,5]
-					 },{
-						name: "愉快", //情感名称
-						data: [52,111,152,145,106,66,32]
-					 },{
-						name: "怨恨", //情感名称
-						data: [12,35,101,155,152,96,85]
-					 }]
-				}
+
 
 var percentInitial = {
 	        report: [   // 要求字段名为name和y， 不可更改
@@ -145,40 +116,70 @@ var keyInitial = { // weight 一一对应words数组的里面的词语，取值�
 
 export const fetchDetail = (id) => {
 	return dispatch => {
-		dispatch({
-			type: "SAVE_BANNER",
-			banner: bannerInitial
-		});
-		dispatch({
-			type: "SAVE_TOPICS",
-			topics: topicsInitial,
-			total: topicsInitial.length
-		});
+		// dispatch({
+		// 	type: "SAVE_BANNER",
+		// 	banner: bannerInitial
+		// });
+		// dispatch({
+		// 	type: "SAVE_TOPICS",
+		// 	topics: topicsInitial,
+		// 	total: topicsInitial.length
+		// });
 
-		dispatch({
-			type: "SAVE_REPORT_NUM",
-			reportNum: reportInitial
-		});
+		
 
-		dispatch({
-			type: "SAVE_PERCENT",
-			percent: percentInitial
-		});
+		// dispatch({
+		// 	type: "SAVE_PERCENT",
+		// 	percent: percentInitial
+		// });
 
-		dispatch({
-			type: "SAVE_KEYWORDS",
-			keywords: keyInitial
-		})
+		// dispatch({
+		// 	type: "SAVE_KEYWORDS",
+		// 	keywords: keyInitial
+		// })
 		// 发起请求
+		$.ajax({
+			type: "GET",
+			url: "http://192.168.235.21:8080/WeiboNewsProject/news/newsTopic.action",
+			data: {
+				eid: id
+			},
+			dataType: "jsonp",
+			success: function(result) {
+				console.log(result);
+				dispatch({
+					type: "SAVE_BANNER",
+					banner: result.basic
+				});
+				dispatch({
+					type: "SAVE_TOPICS",
+					topics: result.topics,
+					total: result.topics.length
+				});
+				dispatch({
+					type: "SAVE_PERCENT",
+					percent: {
+						emotion: result.emotion_percent,
+						report: result.report_percent
+					}
+				});
+
+				dispatch({
+					type: "SAVE_KEYWORDS",
+					keywords: result.keywords
+				})
+
+			},
+			error: function(e){
+				console.log(e);
+			}
+		})
 		// axios.get('url', {
 		// 	id: "新闻id"
 		// })
 		// .then((responce) => {
 		// 	console.log(responce);
-		// 	dispatch({
-		// 		type: "SAVE_BANNER",
-		// 		banner: responce.basic
-		// 	});
+		
 		// 	dispatch({
 		// 		type: "SAVE_TOPICS",
 		// 		topics: responce.topics,

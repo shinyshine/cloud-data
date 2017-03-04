@@ -34,14 +34,16 @@ class NewsItem extends React.Component {
 				
 				<div className="news-detail">
 					<div className="img-container">
-						<date className="date">{this.props.item.date}</date>
-						<img src={require('../../images/made.jpg')} />
+						<p className="date">2017/3/3</p>
+				
+						<img src={this.props.item.newsImageUrl} />
 					</div>
 					<article>
-						<h1>{this.props.item.title}</h1>
+						<h1 title={this.props.item.newsTitle}>{this.props.item.newsTitle}</h1>
 						<div className="content">
-							<p className={"content-wrap" + (!this.state.showAll ?'':" content-wrap-auto")}>{this.props.item.content}</p>
+							<p className={"content-wrap" + (!this.state.showAll ?'':" content-wrap-auto")}>{this.props.item.newsContent}</p>
 							<p className="detail-btn">
+								<span><a href={this.props.item.newsUrl} target="_blank">前往原文</a></span>
 								<span onClick = {() => this.toggleText()}>{this.state.btnText}</span>
 							</p>
 							

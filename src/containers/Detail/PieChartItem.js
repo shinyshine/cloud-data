@@ -6,7 +6,7 @@ class PieChart extends React.Component {
 	constructor(props) {
 
 		super(props);
-		var len = this.props.pie.length;
+		var len = this.props.len;
 		var colorArr =  (len == "5" ? [
 										"#8B0505",
 										"#B80002",
@@ -26,7 +26,9 @@ class PieChart extends React.Component {
 										"#BFDBF7"
 									   ]);
 
-		console.log(this.props);
+		this.state = {
+			pie: this.props.pie
+		}
 		this.chartConfig = {
 			chart: {
 				plotBackgroundColor: null,
@@ -70,6 +72,7 @@ class PieChart extends React.Component {
 		}
 	}
 
+
 	render() {
 		return (
 			<div className="pie-item">
@@ -79,6 +82,14 @@ class PieChart extends React.Component {
 				</div>
 			</div>
 		);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.chartConfig.series = [{
+						name: 'Brands',
+						colorByPoint: true,
+						data: nextProps.pie
+					}]
 	}
 }
 

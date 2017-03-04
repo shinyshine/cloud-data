@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import { banner, standBy, emotionPie, comments, newsList, commentNum } from './topic'
+import { banner, standBy, emotionPie, comments, newsList, commentNum, reportLine } from './topic'
 
 const reducers = combineReducers({
 	banner: banner,
+	reportLine: reportLine,
 	standBy: standBy,
 	emotionPie: emotionPie,
 	comments: comments,

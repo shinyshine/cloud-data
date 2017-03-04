@@ -4,7 +4,6 @@
 @borderC: #aaaaaa;
 .banner-caption{
 	
-	
 	.hot-level {
 		margin-top: 20px;
 		height: 50px;
@@ -116,6 +115,7 @@
 	}
 
 	article {
+		min-height: 240px;
 		transition: all 0.5s;
 		position: relative;
 		margin-left: 400px;
@@ -130,14 +130,18 @@
 			letter-spacing: 2px;
 			border-bottom: 1px solid #dddddd;
 			padding-bottom: 10px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
 		}
 		.content {
 			margin-top: 10px;
 			.content-wrap{
 				transition: all 0.5s;
-				height: 92px;
+				height: 122px;
 				overflow: hidden;
-				line-height: 23px;
+				line-height: 25px;
 				font-size: 15px;
 				color: #555555;
 			}
@@ -152,6 +156,11 @@
 				text-align: right;
 				color: @mainC;
 				margin-top: 5px;
+				a{
+					margin-right: 20px;
+					color: @mainC;
+					text-decoration: none;
+				}
 			}
 		}
 		
@@ -161,9 +170,28 @@
 
 
 }
-
+.line-chart{
+	padding: 40px 0;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #aaaaaa;
+	.sub-title:after{
+		background: url('../images/line_chart.png') no-repeat;
+		background-size: 36px 36px;
+		background-position: center center;
+	}
+	.line-chart-container{
+		position: relative;
+		padding: 70px 0 10px;
+		.y-axis{
+			position: absolute;
+			top: 35px;
+			left: 5px;
+			z-index: 999;
+			font-size: 18px;
+		}
+	}
+}
 .stand-by{
-	min-height: 300px;
 	padding: 50px 0;
 	background-color: @bgColor;
 	border-bottom: 1px solid @borderC;

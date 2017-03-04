@@ -1,7 +1,8 @@
 // topics 的初始化
 const initial = {
 	current: 0,
-	total: 0
+	total: 0,
+	topics: []
 }
 
 export const topics = (state = initial, action) => {
@@ -27,8 +28,11 @@ export const report = (state = {}, action) => {
 			return state;
 	}
 }
-
-export const keywords = (state = {}, action) => {
+var keyIn = {
+	weightList: [],
+	wordsList: []
+}
+export const keywords = (state = keyIn, action) => {
 	switch (action.type) {
 		case 'SAVE_KEYWORDS':
 			return action.keywords;
@@ -37,8 +41,11 @@ export const keywords = (state = {}, action) => {
 			return state;
 	}
 }
-
-export const percent = (state = {}, action) => {
+var reportIn = {
+	emotion: [],
+	report: []
+}
+export const percent = (state = reportIn, action) => {
 	switch (action.type) {
 		case "SAVE_PERCENT": 
 			return action.percent;

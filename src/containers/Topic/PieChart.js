@@ -61,6 +61,15 @@ class PieChart extends React.Component {
 					}]
 		}
 	}
+	componentWillReceiveProps(nxp) {
+		if(nxp.pieData.length != 0) {
+			this.chartConfig.series =   [{
+											name: '占比',
+											colorByPoint: true,
+											data: nxp.pieData
+										}]
+		}
+	}
 
 	render() {
 		return (

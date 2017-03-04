@@ -21,9 +21,6 @@ class CommentBar extends React.Component {
 	        colors: ['#C10909'],
 	        legend: {
 	        	enabled: false
-				// align: 'right',
-				// verticalAlign: 'middle',
-				// layout: "vertical"
 			},
 
 	        xAxis: {
@@ -68,6 +65,15 @@ class CommentBar extends React.Component {
 	        }]
 		}
 
+	}
+	componentWillReceiveProps(nextP) {
+		if(nextP.commentNum.date.length != 0) {
+			this.chartConfig.xAxis.categories = nextP.commentNum.date;
+			this.chartConfig.series =   [{
+								            name: '评论数量',
+								            data: nextP.commentNum.number
+								        }]
+		}
 	}
 
 	render() {

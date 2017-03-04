@@ -47,9 +47,21 @@
 			float: left;
 			height: 240px;
 		}
+		.link-item, .link-item-tiny{
+			p{
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				cursor: pointer;
+				text-align: center;
+
+			}
+		}
 		.link-item{
 			position: relative;
 			width: 205px;
+			
 			
 			.topic-title{
 				position: absolute;
@@ -59,6 +71,10 @@
 				font-size: 24px;
 				padding: 35px 20px;
 				box-sizing: border-box;
+				a {
+					color: #ffffff;
+					text-decoration: none;
+				}
 				
 				color: #ffffff;
 				&:after{
@@ -73,13 +89,7 @@
 					left: 0;
 					top: 100%;
 				}
-				p{
-					width: 100%;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
-					cursor: pointer;
-				}
+				
 				
 			}
 
@@ -110,6 +120,10 @@
 				box-sizing: border-box;
 				
 				color: #ffffff;
+				a {
+					color: #ffffff;
+					text-decoration: none;
+				}
 				&:after{
 					content: "";
 					position: absolute;
@@ -122,13 +136,7 @@
 					left: 0;
 					top: 100%;
 				}
-				p{
-					width: 100%;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
-					cursor: pointer;
-				}
+
 				
 			}
 

@@ -8,6 +8,7 @@ import NewsLinks from '../containers/Topic/NewsLinks'
 import StandBy from '../containers/Topic/StandBy'
 import CommentBar from '../containers/Topic/CommentBar'
 import EmotionPie from '../containers/Topic/EmotionPie'
+import LineChart from '../containers/Topic/LineChart'
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
 			<Header/>
 			<Banner/>
 			<NewsLinks/>
+			<LineChart/>
 			<StandBy/>
 			<CommentBar/>
 			<EmotionPie/>

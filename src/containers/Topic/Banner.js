@@ -6,7 +6,6 @@ import { fetchTopic } from "../../redux/action/topic"
 class BannerItem extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props);
 	}
 
 	componentWillMount() {
@@ -18,6 +17,13 @@ class BannerItem extends React.Component {
 		// 在此处请求整个页面的数据
 		this.props.actions.fetchTopic(id);
 	}
+	getHotHtml(num) {
+		var arr = [];
+		for(var i = 0; i < num; i ++) {
+			arr.push(<i className="fire" key={i}></i>);
+		}
+		return arr;
+	}
 
 	render() {
 		return (
@@ -26,15 +32,16 @@ class BannerItem extends React.Component {
 					<div className="news-slide-wrapper">
 						<div className="banner-item">
 							<figure>
-								<img src={require('../../images/1.jpg')} />
+								<img src={this.props.banner.topicImgUrl} />
 								<div className="banner-caption">
-									<h1>{this.props.banner.title}</h1>
+									<h1>{this.props.banner.topicName}</h1>
+									<p>{this.props.banner.topicDatetime}</p>
 									<p className="abstract">
-										{this.props.banner.abstract}
+										{this.props.banner.topicSummary}
 									</p>
 									<div className="hot-level">
 										<span>热度指数</span>
-
+										{this.getHotHtml(this.props.banner.topicHotWeight)}
 									</div>
 								</div>
 								
@@ -49,11 +56,9 @@ class BannerItem extends React.Component {
 }
 
 
-const mapStateTopProps = (state) => {
-	return {
-		banner: state.banner
-	}
-}
+const mapStateTopProps = (state) => ({
+	banner: state.banner
+})
 const mapDispatchToProps = (dispatch) => ({
 	actions: bindActionCreators({ fetchTopic }, dispatch)
 })

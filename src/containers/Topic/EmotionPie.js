@@ -33,7 +33,7 @@ class EmotionPie extends React.Component {
 							<h3 className="target"><i style={{backgroundColor: this.state.colorsArr[this.props.comments.item.id]}}></i>{this.props.comments.item.text}</h3>
 							<ul>
 								{ this.props.comments.comments.map((item, index) => {
-									return <li key={item.id}>{item.text}</li>
+									return <li key={index}>{item.commentContent}</li>
 								})}
 							</ul> 
 						</div>:null

@@ -12,16 +12,11 @@ const cloud = require("d3-cloud")
 class Cloud extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(d3);
 
 	}
-	
-	componentDidMount() {
-		var _this = this;
-		// var wordsArr = [
-		// 		      "谢杏芳", "林丹", "中国体育", "比赛", "出轨", "最大危机", "赵雅琪",
-		// 		      "模范夫妻", "泥潭中求生"];
-		// var sizeArr = [0.25, 0.8, 0.1, 0.12, 0.75, 0.4, 0.45, 0.35, 0.23]
+	drawCloud(wordsList, weight) {
+		// wordsList = [ "谢杏芳","林丹","中国体育","比赛","出轨","最大危机","赵雅琪","模范夫妻", "泥潭中求生"];
+		// weight = [5, 8, 1, 12,75, 4, 45, 35, 23];
 		// 定义多种颜色的词云
 		var fill = function(i) {
 			return d3.schemeCategory20[i];
@@ -51,8 +46,8 @@ class Cloud extends React.Component {
 		// 配置词云的样式
 		var layout = cloud()
 				    .size([450, 450])
-				    .words(_this.props.keywords.words.map(function(d, i) {
-				      return {text: d, size: 14 + _this.props.keywords.weight[i] * 60, test: "haha"};
+				    .words(wordsList.map(function(d, i) {
+				      return {text: d, size: 14 + weight[i] * 6, test: "haha"};
 				    }))
 				    .padding(5)
 				    .rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -62,6 +57,11 @@ class Cloud extends React.Component {
 		
 		// 开始绘制		    // 
 		layout.start();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps);
+		this.drawCloud(nextProps.keywords.wordsList, nextProps.keywords.weightList);
 	}
 
 	render() {

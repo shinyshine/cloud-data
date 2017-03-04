@@ -7,7 +7,6 @@ import ReactHighCharts from "react-highcharts";
 class LineChart extends React.Component {
 	constructor(props) {
 		super(props);
-
 		this.chartConfig = {
 			title: {
 				text: '报道量',
@@ -17,7 +16,7 @@ class LineChart extends React.Component {
 				}
 			},
 			xAxis: {
-				categories: this.props.lineChart.date,
+				categories: this.props.lineData.date,
 				lineColor: '#C20706',
 				lineWidth: 4,
 				tickWidth: 0,
@@ -49,7 +48,13 @@ class LineChart extends React.Component {
 				verticalAlign: 'middle',
 				borderWidth: 0
 			},
-			series: this.props.lineChart.report
+			series: this.props.lineData.report
+		}
+	}
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.lineData.date.length != 0) {
+			this.chartConfig.xAxis.categories = nextProps.lineData.date;
+			this.chartConfig.series = nextProps.lineData.report;
 		}
 	}
 
@@ -69,7 +74,7 @@ class LineChart extends React.Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	lineChart: state.report
+	lineData: state.reportLine
 })
 
 export default connect(mapStateToProps, null)(LineChart);
