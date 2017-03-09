@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-
+import { splitUrlSearch } from "../../config/config"
 
 import {fetchNews} from '../../redux/action/index'
 
@@ -9,10 +9,12 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
 
+        // 获取地址栏的搜索项
+        var arr = splitUrlSearch();
+
         this.state = {
-            search: ""
-        };
-        
+            search: decodeURI(arr['s'] ? arr['s'] : "")
+        };   
     }
 
     render() {
@@ -23,9 +25,8 @@ class Header extends React.Component {
         			<div className="search-bar">
         				<form onSubmit={e => {
         					e.preventDefault();
-        					
-        					this.props.actions.fetchNews(this.state.search);
-        					
+                            window.location.href = "http://" + window.location.host + "?s=" + this.state.search;
+
         				}}>
         					<input 
         						type="text" 

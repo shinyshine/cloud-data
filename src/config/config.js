@@ -18,6 +18,21 @@ export const splitUrlSearch = () => {
 
 
 	}
-	console.log(arr);
 	return arr;
+}
+
+export const isIE = (ver) => {
+	var b = document.createElement('b');
+	b.innerHTML = '<!--[if IE ' + ver + ']1<![endif]-->';
+	console.log(b.innerHTML)
+	return b.innerHTML;
+}
+export const getIEVer = () => {
+	var UA = navigator.userAgent;
+
+	if(/msie/i.test(UA)) {
+		return parseInt(UA.match(/msie (\d+\.\d+)/i)[1]);
+	} else {
+		return false;
+	}
 }

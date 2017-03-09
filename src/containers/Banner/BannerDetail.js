@@ -20,7 +20,7 @@ class BannerItem extends React.Component {
 
 	render() {
 		return (
-			<div id="banner">
+			<div className="banner">
 				<div className="current-viewport">
 					<div className="news-slide-wrapper">
 						<div className="banner-item">
@@ -28,7 +28,7 @@ class BannerItem extends React.Component {
 								<img src={this.props.banner.eventImageUrl} />
 								<div className="banner-caption">
 									<h1>{this.props.banner.eventName}</h1>
-									<p className="date">{this.props.banner.eventDateTime}</p>
+									<p className="date">{this.props.banner.eventDatetime}</p>
 									<p className="abstract">
 										{this.props.banner.eventSummary}
 									</p>

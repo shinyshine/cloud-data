@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var htmlWebpackPlugin = require('html-webpack-plugin');
 var path = require("path");
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 //利用相对路径通过解析得到绝对路径
 var DIST_DIR = path.resolve(__dirname, "dist");
@@ -11,7 +13,10 @@ var config = {
     entry: {
         index: './src/script/index.js',
         detail: './src/script/detail.js',
-        topic: './src/script/topic.js'
+        topic: './src/script/topic.js',
+        // index_css: './src/style/NewsList.less',
+        // detail_css: './src/style/Detail.less',
+        // topic_css: './src/style/Topic.less'
     },
     output: {
         path: DIST_DIR + '/app',
@@ -40,28 +45,45 @@ var config = {
                 test: /\.less$/,
                 exclude: path.resolve(__dirname, 'node_modules'),
                 include: SRC_DIR,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: function () {
-                                return [
-                                    require('postcss-smart-import'),
-                                    require('autoprefixer')
-                                ];
+                use : ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: ['css-loader', 
+                          'less-loader',
+                          {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: function() {
+                                    return [
+                                        require('postcss-smart-import'),
+                                        require('autoprefixer')
+                                    ];
+                                }
                             }
-                        }
-                    },
-                    'less-loader'
-                ]
+                        },
+                        
+                    ]
+                })
+                // use: [
+                //     'style-loader',
+                //     'css-loader',
+                //     {
+                //         loader: 'postcss-loader',
+                //         options: {
+                //             plugins: function () {
+                //                 return [
+                //                     require('postcss-smart-import'),
+                //                     require('autoprefixer')
+                //                 ];
+                //             }
+                //         }
+                //     },
+                //     'less-loader'
+                // ]
             },
             {
                 test: /\.css$/,
                 exclude: path.resolve(__dirname, 'node_modules'),
                 include: SRC_DIR,
-                // loader: 'style-loader!css-loader',
                 use: [
                     'style-loader',
                     'css-loader?importLoaders=1',
@@ -86,6 +108,7 @@ var config = {
 
 
     plugins: [
+        new ExtractTextPlugin("style.css"),
         new htmlWebpackPlugin({
             filename: 'index.html',
             template: './src/template/index.html',

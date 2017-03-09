@@ -98,8 +98,4 @@ export const search = (text) => ({
 	text: text
 })
 
-export const switchBanner = (index) => {
-	return dispatch => {
-		dispatch({type: 'SWITCH_BANNER', index: index})
-	}
-}	
+

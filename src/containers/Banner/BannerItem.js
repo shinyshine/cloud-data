@@ -3,10 +3,12 @@ import React from "react"
 class BannerItem extends React.Component {
 	constructor(props) {
 		super(props);
+		console.log(this.props);
 		this.state = {
 			bannerItem: this.props.item,
-			host: window.location.host
+			url: "http://" + window.location.host + "/detail.html?eid=" + this.props.item.eventId
 		}
+
 
 	}
 
@@ -14,7 +16,7 @@ class BannerItem extends React.Component {
 		var item = this.props.item;
 		return (
 			<div className="banner-item">
-				<a href={this.state.host + '/detail/?id=' + item.eventId}>
+				<a target="_blank" href={this.state.url}>
 					<figure>
 						<img src={item.eventImageUrl} />
 						<div className="banner-caption">

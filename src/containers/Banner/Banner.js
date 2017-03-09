@@ -3,47 +3,77 @@ import { connect } from "react-redux"
 
 import { bindActionCreators } from "redux"
 
-import { switchBanner, fetchNews } from '../../redux/action/index'
-
+import { fetchNews } from '../../redux/action/index'
+import { splitUrlSearch } from "../../config/config"
 import BannerItem from './BannerItem'
+import { isIE, getIEVer } from '../../config/config'
 class Banner extends React.Component {
 	constructor(props) {
 		super(props);
-		 this.state = {
-		 	interval: null,
-		 }
+		this.state = {
+			len: this.props.banner.length,
+			current: 0,
+		}
+
+		this.switchBanner = (index) => {
+			clearInterval(this.timer);
+
+			this.setState(Object.assign({}, this.state, { current: index} ));
+			this.tick();
+	    	console.log(this.state);
+	    }
 	}
 	componentWillMount() {
 		// 获取地址栏的搜索信息
-		var text = "";
-		var url = window.location.search;
-		
-		if(url != "") {
-			url = url.split('?')[1];
-			text = url.split('=')[1];
-		}
+		var arr = splitUrlSearch(),
+			text = decodeURI(arr['s'] ? arr['s'] : "");
+
 		// 请求首页的10条数据
+		console.log(text);
 		this.props.actions.fetchNews(text);
 
+
+	}
+	componentWillReceiveProps(nextProps) {
+		var len = nextProps.banner.length;
+		if(len != 0) {
+			this.state.len = len;
+		}
+	}
+	tick() {
+		this.timer = setInterval(() => {
+			var current = this.state.current,
+				len = this.state.len;
+
+			this.setState((preS) => {
+				return Object.assign({}, this.state, {
+					current: current+1 < len ? current+1 : 0,
+				})
+			})
+		}, 5000)
 	}
 
 	componentDidMount() {
-		var _this = this;
-		this.interval = setInterval(function() {
-			_this.props.actions.switchBanner();
+		var ver = getIEVer();
 
-		}, 5000);
+		if(!!ver && ver <= 9) {
+			return false;
+		}
+
+		this.tick();
+
     }
 
     componentWillUnMount() {
-    	clearInterval(this.interval);
+    	clearInterval(this.timer);
     }
+
 
 	render() {
 		return (
-			<div id="banner">
+			<div className="banner">
 				<div className="current-viewport">
-					<div style={{left: -this.props.current * 100 + '%'}} className="news-slide-wrapper">
+					<div style={{left: -this.state.current * 100 + '%'}} className="news-slide-wrapper">
 						{this.props.banner.map((item, index) => {
 							return <BannerItem key={index} item={item}/>
 						})}
@@ -51,11 +81,11 @@ class Banner extends React.Component {
 					</div>
 
 					<div className="dot-tabs">
-						<span style={{transform: 'translate(' + (this.props.current*50 + 3*(2*this.props.current + 1)) + 'px,0)'}} className="active-tab"></span>
+						<span style={{transform: 'translate(' + (this.state.current*50 + 3*(2*this.state.current + 1)) + 'px,0)'}} className="active-tab"></span>
 						<ul>
 							{this.props.banner.map((item, index) => {
 								if(index <= 2) {
-									return <li key={index}><i></i></li>
+									return <li key={index} onClick={()=>this.switchBanner(index)}><i></i></li>
 								}
 								
 							})}
@@ -69,7 +99,7 @@ class Banner extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators({switchBanner, fetchNews}, dispatch)
+	actions: bindActionCreators({fetchNews}, dispatch)
 })
 
 const mapStateToProps = (state) => {

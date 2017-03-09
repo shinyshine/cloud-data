@@ -116,27 +116,6 @@ var keyInitial = { // weight 一一对应words数组的里面的词语，取值�
 
 export const fetchDetail = (id) => {
 	return dispatch => {
-		// dispatch({
-		// 	type: "SAVE_BANNER",
-		// 	banner: bannerInitial
-		// });
-		// dispatch({
-		// 	type: "SAVE_TOPICS",
-		// 	topics: topicsInitial,
-		// 	total: topicsInitial.length
-		// });
-
-		
-
-		// dispatch({
-		// 	type: "SAVE_PERCENT",
-		// 	percent: percentInitial
-		// });
-
-		// dispatch({
-		// 	type: "SAVE_KEYWORDS",
-		// 	keywords: keyInitial
-		// })
 		// 发起请求
 		$.ajax({
 			type: "GET",

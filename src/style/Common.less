@@ -17,6 +17,10 @@ html, body{
 	width: 100%;
 	height: 100px;
 	background-color: @mainC;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
 
 	.header-container{
 		height: 100%;
@@ -68,54 +72,84 @@ html, body{
 	}
 }
 
-#banner {
+.ie9 .banner,
+.ie8 .banner,
+.ie7 .banner,
+.ie6 .banner {
+	.current-viewport .news-slide-wrapper{
+		width: 100%;
+	}
+	.dot-tabs{
+		display: none;
+	}
+	.banner-item .banner-caption{ 
+		width: 100%;
+		left: 0;
+		bottom: 0;
+		margin: 0;
+		box-sizing: border-box;
+		padding: 30px 20px;
+		.abstract{
+			display: none;
+		}
+	}
+}
+.banner {
+	position: relative;
+	z-index: 9;
+	height: 100vh;
 	.current-viewport{
 		position: relative;
 		width: 100%;
-		height: @bannerH;
+		height: 100%;
 
 		overflow: hidden;
 		.news-slide-wrapper{
+			-webkit-transition: left @bannerTransition;
+			-moz-transition: left @bannerTransition;
+			-ms-transition: left @bannerTransition;
+			-o-transition: left @bannerTransition;
 			transition: left @bannerTransition;
 			position: absolute;
 			left: 0;
 			width: 300%;
 			height: 100%;
-		}
-
-		.dot-tabs {
+		}	
+	}
+	.dot-tabs {
+		position: absolute;
+		bottom: 50px;
+		right: 50%;
+		margin: 0 -@mainW/2;
+		.active-tab{
+			-webkit-transition: transform @bannerTransition;
+			-moz-transition: transform @bannerTransition;
+			-ms-transition: transform @bannerTransition;
+			-o-transition: transform @bannerTransition;
+			display: inline-block;
 			position: absolute;
-			bottom: 50px;
-			right: 50%;
-			margin: 0 -@mainW/2;
-			.active-tab{
-				transition: transform @bannerTransition;
-				display: inline-block;
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 50px;
-				height: 3px;
-				background-color: #ffffff;
-				z-index: 99;
-			}
-			li{
-				list-style: none;
-				float: left;
-				height: 3px;
-				width: 50px;
-				position: relative;
-				padding: 0 3px;
-				z-index: 9;
-			}
-			li i{
-				position: absolute;
-				display: inline-block;
-				width: 50px;
-				height: 3px;
-				background-color: #2D4562;
-			}
-			
+			left: 0;
+			top: 0;
+			width: 50px;
+			height: 3px;
+			background-color: #ffffff;
+			z-index: 99;
+		}
+		li{
+			list-style: none;
+			float: left;
+			height: 3px;
+			width: 50px;
+			position: relative;
+			padding: 0 3px;
+			z-index: 9;
+		}
+		li i{
+			position: absolute;
+			display: inline-block;
+			width: 50px;
+			height: 3px;
+			background-color: #2D4562;
 		}
 		
 	}
@@ -125,6 +159,36 @@ html, body{
 		height: 100%;
 		float: left;
 		overflow: hidden;
+		.banner-caption {      
+				
+			width: @mainW/2;
+			color: #ffffff;
+			position: absolute;
+			left: 50%;
+			margin: 0 -@mainW/2;
+			bottom: 50px;
+			
+			h1{
+				line-height: 60px;
+				letter-spacing: 3px;
+			}
+			.date{
+				font-size: 17px;
+				margin-bottom: 10px;
+				letter-spacing: 2px;
+				span{
+					margin-right: 10px;
+				}
+			}
+			.abstract {
+				max-height: calc(52vh-5px);
+				overflow: hidden;
+				letter-spacing: 1px;
+				color: #eeeeee;
+				font-size: 15px;
+				line-height: 4vh;
+			}
+		}
 		figure {
 			position: relative;
 			height: 100%;
@@ -139,38 +203,14 @@ html, body{
 				background-color: rgba(57,95,134,0.5);
 			}
 			
-			.banner-caption {        
-				width: @mainW/2;
-				color: #ffffff;
-				position: absolute;
-				left: 50%;
-				margin: 0 -@mainW/2;
-				bottom: 50px;
-				h1{
-					line-height: 60px;
-					letter-spacing: 3px;
-				}
-				.date{
-					font-size: 17px;
-					margin-bottom: 10px;
-					letter-spacing: 2px;
-					span{
-						margin-right: 10px;
-					}
-				}
-				.abstract {
-					letter-spacing: 1px;
-					color: #eeeeee;
-					font-size: 15px;
-					line-height: 22px;
-				}
-			}
+			
 		}
+
 
 		figure img{
 			
 			width: 100%;
-			
+			height: 100%;
 		}
 	}
 }
@@ -220,4 +260,29 @@ html, body{
 		width: 36px;
 
 	}
+}
+
+// 自定义滚动条样式  兼容多个浏览器
+body::-webkit-scrollbar{
+	width: 6px;
+}
+
+body::-webkit-scrollbar-button{
+	display: none;
+	background-color: #ffffff;
+}
+
+body::-webkit-scrollbar-track{
+	background-color: #ffffff;
+}
+body::-webkit-scrollbar-thumb{
+	background-color:@mainC;
+	border-radius: 4px;
+}
+
+body::-webkit-scrollbar-corner{
+	background-color: #ffffff;
+}
+body::-webkit-scrollbar-resizer{
+	background-color: #ffffff;
 }

@@ -34,7 +34,7 @@ class NewsItem extends React.Component {
 				
 				<div className="news-detail">
 					<div className="img-container">
-						<p className="date">2017/3/3</p>
+						<p className="date">{this.props.item.newsDatetime.split(" ")[0]}</p>
 				
 						<img src={this.props.item.newsImageUrl} />
 					</div>

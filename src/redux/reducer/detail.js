@@ -13,10 +13,28 @@ export const topics = (state = initial, action) => {
 		case 'SLIDE_TO_PRE':
 			return getSlideState(state, action);
 		case 'SAVE_TOPICS':
-			return Object.assign({}, state, action);
+			// return Object.assign({}, state, action);
+			return overideAssign(state, action);
 		default: 
 			return state;
 	}
+}
+
+function overideAssign(state, action) {
+	if(Object.assign) {
+		return Object.assign({}, state, action);
+	} else {
+
+		for(var props1 in state) {
+			for(var props2 in action) {
+				if(props1 == props2) {
+					state[props1] = action[props2];
+				}
+			}
+		}
+	}
+
+	return state;
 }
 
 export const report = (state = {}, action) => {
