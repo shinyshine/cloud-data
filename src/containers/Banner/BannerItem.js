@@ -6,7 +6,7 @@ class BannerItem extends React.Component {
 		console.log(this.props);
 		this.state = {
 			bannerItem: this.props.item,
-			url: "http://" + window.location.host + "/detail.html?eid=" + this.props.item.eventId
+			url: "http://" + window.location.host + "/detail?eid=" + this.props.item.eventId
 		}
 
 

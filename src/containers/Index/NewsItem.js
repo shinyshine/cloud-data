@@ -13,7 +13,7 @@ class NewsItem extends React.Component {
 				<h2>{this.props.item.eventName}</h2>
 				<div className="news-detail">
 					<div className="img-container">
-						<a href={this.host + "/detail/?id=" + this.props.item.eventId}><img src={this.props.item.eventImageUrl} /></a>
+						<a target="_blank" href={"http://" +this.host + "/detail?eid=" + this.props.item.eventId}><img src={this.props.item.eventImageUrl} /></a>
 					</div>
 					<div className="news-caption">
 						<p className="news-classify"><span>{this.props.item.generalName}</span></p>

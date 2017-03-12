@@ -1,20 +1,9 @@
-// topics 的初始化
-const initial = {
-	current: 0,
-	total: 0,
-	topics: []
-}
 
-export const topics = (state = initial, action) => {
+export const topics = (state = [], action) => {
 	switch (action.type) {
-		case 'SLIDE_TO_NEXT': 
-			return getSlideState(state, action);
-
-		case 'SLIDE_TO_PRE':
-			return getSlideState(state, action);
+		
 		case 'SAVE_TOPICS':
-			// return Object.assign({}, state, action);
-			return overideAssign(state, action);
+			return action.topics;
 		default: 
 			return state;
 	}
@@ -84,10 +73,10 @@ export const banner = (state = {}, action) => {
 	}
 }
 
-const getSlideState = (state, action) => {
-	if(action.current <= (state.total-1) && action.current >= 0){
-		return Object.assign({}, state, action);
-	} else {
-		return state;
-	}
-}
+// const getSlideState = (state, action) => {
+// 	if(action.current <= (state.total-1) && action.current >= 0){
+// 		return Object.assign({}, state, action);
+// 	} else {
+// 		return state;
+// 	}
+// }

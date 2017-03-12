@@ -3,7 +3,7 @@ var htmlWebpackPlugin = require('html-webpack-plugin');
 var path = require("path");
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+var UglifyJsPlugin = require('uglify-js-plugin');
 
 //利用相对路径通过解析得到绝对路径
 var DIST_DIR = path.resolve(__dirname, "dist");
@@ -14,13 +14,11 @@ var config = {
         index: './src/script/index.js',
         detail: './src/script/detail.js',
         topic: './src/script/topic.js',
-        // index_css: './src/style/NewsList.less',
-        // detail_css: './src/style/Detail.less',
-        // topic_css: './src/style/Topic.less'
+
     },
     output: {
         path: DIST_DIR + '/app',
-        filename: "js/[name]-[hash].js",
+        filename: "js/[name]-[hash].min.js",
         publicPath: "/"
     },
     module: {
@@ -108,12 +106,12 @@ var config = {
 
 
     plugins: [
-        new ExtractTextPlugin("style.css"),
+        new ExtractTextPlugin("css/[name].min.css"),
         new htmlWebpackPlugin({
             filename: 'index.html',
             template: './src/template/index.html',
             inject: 'body',
-            title: 'this is index',
+            title: '云山舆情',
             chunks: ['index'],// array
 
 
@@ -122,7 +120,7 @@ var config = {
             filename: 'detail.html',
             template: './src/template/detail.html',
             inject: 'body',
-            title: 'this is detail',
+            title: '云山舆情',
             chunks: ['detail']
         }),
 
@@ -130,8 +128,17 @@ var config = {
             filename: 'topic.html',
             template: './src/template/topic.html',
             inject: 'body',
-            title: 'this is topic',
+            title: '云山舆情',
             chunks: ['topic']
+        }),
+        new UglifyJsPlugin({
+            compress: true, //default 'true', you can pass 'false' to disable this plugin 
+            debug: true //default 'false', it will display some information in console 
+        }),
+        new webpack.DefinePlugin({
+          "process.env": { 
+             NODE_ENV: JSON.stringify("production") 
+           }
         })
     ]
 };
